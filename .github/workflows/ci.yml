@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - run: ruff check src tests scripts
+      - run: pytest -q
+      - name: Full-size run on the bundled data
+        if: matrix.python-version == '3.12'
+        run: pytest -q -m slow
+      - name: Build and check the distribution
+        run: |
+          python -m build
+          twine check --strict dist/*
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t creditdecide .
+      - run: docker run --rm creditdecide datasets
+      - run: docker run --rm creditdecide quality --dataset credit-default
+      - name: Train, score and monitor inside the container
+        run: |
+          mkdir -p work
+          docker run --rm --user "$(id -u):$(id -g)" -v "$PWD/work:/work" creditdecide \
+            run --dataset credit-default --out credit
+          docker run --rm --user "$(id -u):$(id -g)" -v "$PWD/work:/work" creditdecide \
+            predict --model-dir credit/model --csv credit/holdout_test.csv --out scored \
+            --id-column ID --reasons 4
+          test -s work/scored/scores.csv
+          test -s work/scored/reasons.csv
+          docker run --rm --user "$(id -u):$(id -g)" -v "$PWD/work:/work" creditdecide \
+            tableau --run-dir credit --scored scored --out tableau
+          test -s work/tableau/accounts.csv

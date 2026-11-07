@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "creditdecide"
+dynamic = ["version"]
+description = "From a labeled table to a monitored, explainable decision rule: leakage-safe model comparison, calibrated probabilities, cost-based decisions, reason codes, confidence intervals, drift and fairness checks, with a DuckDB SQL data layer and Tableau-ready exports."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "DATA_LICENSE.md"]
+authors = [{ name = "Nathan Steinle" }]
+keywords = ["credit risk", "decision rules", "calibration", "reason codes", "model monitoring",
+            "data quality", "duckdb", "sql", "tableau"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scikit-learn>=1.4",
+    "duckdb>=1.1",
+    "skops>=0.10",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.7"]
+dev = ["pytest>=8", "ruff>=0.5", "matplotlib>=3.7", "build", "twine", "xlrd>=2.0"]
+
+[project.scripts]
+creditdecide = "creditdecide.cli:main"
+
+[project.urls]
+"Source" = "https://github.com/nsteinle/creditdecide"
+"Dataset" = "https://doi.org/10.24432/C55S3H"
+
+[tool.hatch.version]
+path = "src/creditdecide/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/creditdecide"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "scripts", "README.md", "LICENSE", "DATA_LICENSE.md",
+           "CITATION.cff", "CHANGELOG.md", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not slow'"
+markers = ["slow: full-size runs on the bundled dataset (a few minutes on a laptop CPU)"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

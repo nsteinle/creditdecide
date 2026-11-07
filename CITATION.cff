@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "creditdecide"
+version: 0.1.0
+date-released: 2026-11-07
+license: MIT
+type: software
+authors:
+  - family-names: Steinle
+    given-names: Nathan
+    orcid: "https://orcid.org/0000-0003-0658-402X"
+references:
+  - type: dataset
+    title: "Default of Credit Card Clients"
+    authors:
+      - family-names: Yeh
+        given-names: I-Cheng
+    publisher:
+      name: "UCI Machine Learning Repository"
+    year: 2009
+    doi: "10.24432/C55S3H"
+    license: CC-BY-4.0

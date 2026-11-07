@@ -1,0 +1,17 @@
+{
+  "name": "Default of Credit Card Clients",
+  "creator": "I.-C. Yeh",
+  "source": "UCI Machine Learning Repository",
+  "doi": "10.24432/C55S3H",
+  "url": "https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients",
+  "license": "CC BY 4.0",
+  "citation": "Yeh, I.-C. & Lien, C.-H. (2009). The comparisons of data mining techniques for the predictive accuracy of probability of default of credit card clients. Expert Systems with Applications, 36(2), 2473-2480.",
+  "changes": "first header row dropped; 'default payment next month' renamed DEFAULT; stored as gzip CSV; no values altered",
+  "sha256_source_zip": "56c885f84457f6680f8438f02bfcdac9579323d8a94465ee5f26e32baa727602",
+  "sha256_csv_gz": "575fe1afd6e299acf24f398fcf5eb43985bbe493eec84678cddace960ff16641",
+  "n_rows": 30000,
+  "class_counts": {
+    "0": 23364,
+    "1": 6636
+  }
+}
