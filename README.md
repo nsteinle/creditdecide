@@ -40,7 +40,7 @@ The ranges in brackets are 95% bootstrap intervals over the test accounts (see
 | Is anyone treated very differently? | No group large enough to interpret falls below the four-fifths reference. But age was excluded and the inputs still predict "under 25" with ROC AUC 0.82, and under-25s are flagged at 15.1% vs 8.9% to 10.6% for other ages (their default rate is also higher, 27.7%). |
 | Will it keep working? | Every scoring run reports the population stability of each input and of the score. Scoring only clients under 30 is flagged as a moderate shift in credit limits. |
 
-The full write-up, with the industry reasoning behind each choice, is in
+The full write-up, with the reasoning behind each choice, is in
 [docs/BUSINESS_CASE.md](https://github.com/nsteinle/creditdecide/blob/main/docs/BUSINESS_CASE.md).
 Data findings and the verification log are in
 [docs/FINDINGS.md](https://github.com/nsteinle/creditdecide/blob/main/docs/FINDINGS.md), and
@@ -251,5 +251,9 @@ The dashboard is published at
 The code is under the MIT license (`LICENSE`). The bundled data are Yeh, I.-C. (2009), *Default
 of Credit Card Clients*, UCI Machine Learning Repository,
 [doi:10.24432/C55S3H](https://doi.org/10.24432/C55S3H), CC BY 4.0, with the changes listed in
-`DATA_LICENSE.md`. Citation metadata is in `CITATION.cff`, and the release process is in
+`DATA_LICENSE.md`. Each release is archived on Zenodo:
+[doi:10.5281/zenodo.24059025](https://doi.org/10.5281/zenodo.24059025) always resolves to the
+latest version, and version 0.1.0 is
+[doi:10.5281/zenodo.24059026](https://doi.org/10.5281/zenodo.24059026). Citation metadata is
+in `CITATION.cff`, and the release process is in
 [docs/DEPLOY.md](https://github.com/nsteinle/creditdecide/blob/main/docs/DEPLOY.md).
