@@ -11,6 +11,10 @@ SQL, tested against the pandas results, and `creditdecide tableau` writes a run'
 tables for a Tableau Public dashboard. It ships with a real credit-card default dataset and
 also accepts your own CSV.
 
+**Dashboard:** the results of a run on the bundled data are on
+[Tableau Public](https://public.tableau.com/app/profile/nathan.steinle/viz/creditdecidewhichcreditcardaccountstoreview/creditdecide),
+built from the tables that `creditdecide tableau` writes.
+
 **The business question on the bundled data:** a card issuer can only act on a limited number
 of accounts each month (a call, a payment plan, a lower limit). Which accounts should it act on,
 how many of next month's defaults will that reach, how much money will it save, is a model
@@ -219,6 +223,8 @@ are built by the same SQL layer. [docs/TABLEAU.md](https://github.com/nsteinle/c
 describes a five-panel dashboard built from them: the KPI tiles, the gains chart against random
 selection, the reliability diagram, the reasons for flagged accounts, and the flag rate by
 protected group.
+The dashboard is published at
+[Tableau Public](https://public.tableau.com/app/profile/nathan.steinle/viz/creditdecidewhichcreditcardaccountstoreview/creditdecide).
 
 ![ROC and precision-recall curves](https://raw.githubusercontent.com/nsteinle/creditdecide/main/docs/figures/roc_pr_credit_default.png)
 

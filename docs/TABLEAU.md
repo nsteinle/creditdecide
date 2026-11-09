@@ -6,6 +6,10 @@ Tableau Public, the free desktop app (now called Tableau Desktop Public Edition)
 Public opens text files but not Parquet, and allows up to 15 million rows, so 6,002 test
 accounts are well within its limits.
 
+The dashboard described here is published at
+[Tableau Public](https://public.tableau.com/app/profile/nathan.steinle/viz/creditdecidewhichcreditcardaccountstoreview/creditdecide).
+I built it in the Tableau Public web editor; the steps below are written for the desktop app.
+
 The tables are tested (`tests/test_cli.py::test_tableau_export`); the steps in Tableau are not,
 because they are done by hand in the app. Menu names can differ slightly between versions.
 
