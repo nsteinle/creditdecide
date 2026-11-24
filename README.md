@@ -246,6 +246,10 @@ The dashboard is published at
   scikit-learn 1.8 changed it. Runs without `--tune` give the same results on every supported
   version (FINDINGS.md, verification log).
 
+## Acknowledgements
+
+This package was developed with an AI-assisted workflow (Claude, Anthropic).
+
 ## Data, citation and license
 
 The code is under the MIT license (`LICENSE`). The bundled data are Yeh, I.-C. (2009), *Default
